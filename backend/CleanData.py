@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from flask import Flask, request, jsonify
 
+
 def clean_data(data):
     df=data
    # mean = df.mean()
@@ -17,7 +18,9 @@ def clean_data(data):
     
     return df
 
-@app.route('/clean', methods=['GET']):
+app = Flask(__name__)
+
+@app.route('/clean', methods=['GET'])
 def clean():
     df = clean_data(data)
     return df.to_json()
